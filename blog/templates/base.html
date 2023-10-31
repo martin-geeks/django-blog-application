@@ -1,0 +1,45 @@
+{% load compress %}
+{% load static %}
+{% load icons %}
+{% icon 'edit' %}
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Django Central</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+        <meta name="google" content="notranslate" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" 
+            crossorigin="anonymous" />
+            <link rel="stylesheet" href="{% static 'src/output.css' %}">
+        {% compress css %}
+            <link rel="stylesheet" href="{% static 'src/output.css' %}">
+        {% endcompress %}
+        <style>
+            .hide-scrollbar {
+                -ms-overflow-style: none;  /* Internet Explorer 10+ */
+                scrollbar-width: none;  /* Firefox */
+            }
+            .hide-scrollbar::-webkit-scrollbar { 
+                display: none;  /* Safari and Chrome */
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class='flex'>
+            <div class='w-[20%] border-r h-[100vh]'>
+                {% block sidebar %}
+                    {% include "sidebar.html" %}
+                {% endblock sidebar %}
+            </div>
+            <div class='overflow-scroll h-[100vh] w-[80%]'>
+                {% block content %}
+                <!-- Content Goes here -->
+                {% endblock content %}
+             <div>
+        </div>
+        
+    </body>
+</html>
